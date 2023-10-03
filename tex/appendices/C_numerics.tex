@@ -1,0 +1,36 @@
+\chapter{Numerical Implementation in Mathematica}\label{chap:appendixC}
+Since setting up the numerical framework for the conducted calculations was an integral part of this work, but is of course not reflected appropriately in this writeup, we want to give the interested reader a brief overview of the numerics developed in the scope of this thesis. All numerical calculations were performed in Mathematica \cite{Mathematica} equipped with FormTracer \cite{FormTracer}, a tool developed in our working group to trace large expressions, that are usually present in loop calculations in QFT.
+\section*{Computation of the Self-Energy Diagram in the Quark DSE}
+\begin{itemize}
+	\item \footnotesize\url{https://github.com/mathieukaltschmidt/MSc-Thesis/Numerics/01_quarkDSE.nb}
+\end{itemize}
+In this notebook we perform the computation of the quark self-energy diagram, including a visualization of the respective renormalization procedure for the spectral integrals and cross checks for the analytic continuation of the obtained expressions.
+
+\section*{Extracting the Spectral Function(s)}
+\begin{itemize}
+	\item \footnotesize\url{https://github.com/mathieukaltschmidt/MSc-Thesis/Numerics/02_SpecFuncIter.nb}
+\end{itemize}
+This notebook features the main part of the numerical work: We iteratively perform the numerical spectral integrals and access the quark spectral functions from the retarded propagator  by applying \eqref{eqn:specfunc_relation} and update the input spectral functions for every iteration step. For an overview of the code structure cf. \figref{fig:numerics}. Afterwards we perform some benchmark checks. \\
+\newpage
+\section*{Numerical Setup}
+All numerical spectral integrations are performed in Mathematica using standard integration routines with a relative precision goal of $10^{-3}$. 
+The spectral integrals are evaluated on discrete momentum grids and the resulting discrete expressions for the diagrams, the different dressings and the obtained spectral functions are interpolated using B-splines for the Euclidean, and Hermite polynomials for the Minkowski expressions.  This leaves us with continuous quark spectral functions, that are fed back into the computation after every iteration step.\\
+In the following we summarize all important parameters of the iterative procedure in Table \ref{tab:numerical_input}.
+\begin{table}[H]
+\centering	
+\begin{tabular}{Sl} \toprule
+    {Parameter} & {Value} \\ \midrule
+    $\alpha_s$  & 0.22  \\[0.5em] 
+    $m_{q,0}$  & 1 MeV   \\[0.5em] 
+    $\mu$  & 2 GeV   \\[0.5em] 
+     \midrule 
+    $\lambda_{1,\mathrm{min}}\ /\ \lambda_{2,\mathrm{min}}$  & $10^{-3}$\\[0.5em] 
+    $\lambda_{1,\mathrm{max}}\ /\ \lambda_{2,\mathrm{max}}$  & $10^{2}$\\[0.5em]  
+    $p_{\mathrm{min}}\  /\ \omega_{\mathrm{min}}$  & $10^{-2}$     \\[0.5em]  
+    $p_{\mathrm{max}}\ /\  \omega_{\mathrm{max}}$  & $10^{3}$      \\[0.5em]  
+    \bottomrule
+\end{tabular}
+\caption{Overview of all relevant parameters for the iterative procedure.}
+\label{tab:numerical_input}
+\end{table}
+The three relevant external parameters that need to be fixed at the beginning are the quark mass parameter $m_{q,0}$, the strong coupling constant $\alpha_s$ and the RG scale $\mu$, i.\,e. the relevant scale  for the application of the spectral regularization. Note, that fixing the value of the strong coupling constant $\alpha_s$ is redundant, since it enters the diagram as a global prefactor that might be reabsorbed into the definition of the spectral function $\rho_q \rightarrow \sqrt{\alpha_s}\rho_q$. Here, it is set to the standard value of $\alpha_s=0.22$. 

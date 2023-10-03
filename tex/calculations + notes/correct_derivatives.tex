@@ -1,0 +1,54 @@
+%compiling with XeLaTeX
+\documentclass[digital, %colors on
+			   %print,  %for printing
+			   %twoside, %turn off for digital version
+			   openright, %chapter always start on the right page
+			   parskip=half,
+			   11pt]{mythesis}
+
+\usepackage{bbold}
+
+
+\begin{document}
+\pagestyle{plain}
+
+\section*{Correct computation of the res}
+To account for the the splitting  into pole and continuous contributions to the spectral functions we need to compute the residue of $\Gamma^{(2)}$ in every iteration step since it enters the pole contribution as a prefactor, characterizing the associated contour integral enclosing the (isolated) pole.\\
+We want to make use of the fact, that the residues of an inverse function can easily be computed, if we know the zeros of the original function, i.\,e.
+\begin{equation}
+	\text{If}\ f(a) = 0\ \text{is a first order root of}\ f \implies \operatorname{Res}_a \frac{1}{f} = \frac{1}{f'(a)},
+\end{equation} 
+for a complex function $f$ with $a\in\mathbb{C}$.
+This translates in our case to
+\begin{equation}
+	 \eval{\det \left\{\Gamma_q^{(2)}(p^2)\right\}}_{p=p_{\mathrm{root}}} = 0 \implies \operatorname{Res}_{p_{\mathrm{root}}} G_q(p^2) = \eval{\frac{1}{\partial_{p^2}\Gamma_q^{(2)}(p^2)}}_{p=p_{\mathrm{root}}}.
+\end{equation}
+Note that we used the determinant here since we are working with a matrix-valued 2-point function, i.\,e.
+\begin{equation}
+\begin{aligned}
+		\Gamma^{(2)}_q(p^2)  &= G_{q0}^{-1}(p^2) - \Sigma_q(p^2) \\
+		&= i\slashed{p} A(p^2) + B(p^2),
+\end{aligned}
+\end{equation}
+where $A$ and $B$\ are two scalar dressing functions needed to fully characterize the Dirac structure of the quark propagator. Its determinant can be computed as follows:
+ \begin{equation}
+\begin{aligned}
+	 \det \left\{\Gamma_q^{(2)}(p^2)\right\} &= \det \left\{ipA(p^2) \begin{pmatrix}
+\phantom{-}1 & \phantom{-}0 & \phantom{-}0 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}1 & \phantom{-}0 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}0 & -1 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}0 & \phantom{-}0 & -1\phantom{-}\\
+\end{pmatrix} +  B(p^2)\begin{pmatrix}
+\phantom{-}1 & \phantom{-}0 & \phantom{-}0 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}1 & \phantom{-}0 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}0 & \phantom{-}1 & \phantom{-}0\phantom{-}\\
+\phantom{-}0 & \phantom{-}0 & \phantom{-}0 & \phantom{-}1\phantom{-}\\
+\end{pmatrix} \right\} \\
+	 &= \left(\left(ipA(p^2) + B(p^2\right)\left(-ipA(p^2) + B(p^2\right)\right)^2 \\
+	 &= \left(p^2A^2(p^2) + B^2(p^2)\right)^2 \\
+		&= p^4 A^4(p^2) + 2p^2B^2(p^2)A^2(p^2) + B^4(p^2)\\
+		&\overset{!}{=} 0.
+\end{aligned}
+\end{equation}
+Here we used the fact, that we do not have to consider the spatial momenta explicitly since their information can always be restored from Lorentz invariance, implying $\slashed{p} \rightarrow p^0\gamma_0$ with $p^0\equiv p$, the time-like Euclidean momentum.
+\end{document}

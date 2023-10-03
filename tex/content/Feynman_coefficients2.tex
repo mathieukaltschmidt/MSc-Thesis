@@ -1,0 +1,35 @@
+\pagebreak
+
+\newcommand{\col}[1]{\label{eq:coeff_A_#1}\qquad\qquad}
+\newenvironment{titledeqns}[1]{\large\bfseries{#1}
+}{}
+
+\newcommand{\tunedvs}{3pt}
+
+\makeatletter 
+\def\leqno{\tagsleft@true}\def\reqno{\tagsleft@false} 
+\makeatother 
+
+\leqno
+
+\hspace{0pt}
+\vspace{2em}
+\begin{titledeqns}{Coefficients and Explicit Expressions for the Feynman Parameter Integration - Dirac Vector Part II}
+\begin{align}
+ \beta_0 &= 0,  \\[1em]
+ \beta_1 &= -\frac{p^2+\lambda_2^2}{\lambda_1^2}, \\[1em]
+ \beta_2 &= \frac{2p^2}{\lambda_1^2}, \\[3em]
+ g_0 &= \frac{\lambda_2^2 \operatorname{log}\left(\frac{p^2}{\lambda_2^2}+1\right)}{p^2}+ \operatorname{log}\left(\lambda_2^2+p^2\right)-2, \\[1em]
+ g_1 &=\frac{\left(\lambda_2^2+p^2\right)^2  \operatorname{log} \left(\lambda_2^2+p^2\right)-\left(\lambda_2^2+2 p^2\right) \left(2 \lambda_2^2  \operatorname{log} (\lambda_2)+p^2\right)}{2 p^4},\\[1em]
+ g_2 &= -\frac{15 \lambda_2^2 p^4+6 \lambda_2^4 p^2+12  \operatorname{log} (\lambda_2) \left(\lambda_2^6+3 \lambda_2^4 p^2+3 \lambda_2^2 p^4\right)-6 \left(\lambda_2^2+p^2\right)^3  \operatorname{log} \left(\lambda_2^2+p^2\right)+13 p^6}{18 p^6}. \end{align}
+\vspace{2em}
+\end{titledeqns}
+
+\begin{titledeqns}{Coefficients and Explicit Expressions for the Feynman Parameter Integration - Dirac Scalar Part}
+\begin{align}
+ \gamma_0 &= 3, \\[1em]
+ h_0 &= f_0 = \frac{1}{p^2}\left[\left(\lambda_1^2-\lambda_2^2\right)  \operatorname{log} \left(\frac{\lambda_2}{\lambda_1}\right)+\zeta\cdot \operatorname{arcoth}\left(\frac{\lambda_2^2+\lambda_1^2+p^2}{\zeta}\right)\right] + \operatorname{log} (\lambda_2)+ \operatorname{log} (\lambda_1)-2. 
+\end{align}
+\end{titledeqns}
+
+\reqno

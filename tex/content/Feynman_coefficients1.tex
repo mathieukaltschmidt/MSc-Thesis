@@ -1,0 +1,26 @@
+\newcommand{\col}[1]{\label{eq:coeff_A_#1}\qquad\qquad}
+\newenvironment{titledeqns}[1]{\large\bfseries{#1}
+}{}
+
+\newcommand{\tunedvs}{3pt}
+
+\makeatletter 
+\def\leqno{\tagsleft@true}\def\reqno{\tagsleft@false} 
+\makeatother 
+
+\leqno
+
+\hspace{0pt}
+%\vspace{1em}
+\begin{titledeqns}{Coefficients and Explicit Expressions for the Feynman Parameter Integration - Dirac Vector Part I}
+%\vfill
+\begin{align}
+ \alpha_0 &= -2, \\[1em]
+\alpha_1 &= -\frac{p^2+\lambda_2^2 - 4\lambda_1^2}{\lambda_1^2}, \\[1em]
+\alpha_2 &= \frac{3p^2}{\lambda_1^2}, \\[3em]
+f_0 &= \frac{1}{p^2}\left[\left(\lambda_1^2-\lambda_2^2\right)  \operatorname{log} \left(\frac{\lambda_2}{\lambda_1}\right)+\zeta\cdot \operatorname{arcoth}\left(\frac{\lambda_2^2+\lambda_1^2+p^2}{\zeta}\right)\right] + \operatorname{log} (\lambda_2)+ \operatorname{log} (\lambda_1)-2, \\[1em]
+f_1 &=  \frac{1}{4 p^4}\left[-\mathcal{D}_{\mathrm{cut}}\cdot\zeta\left(\lambda_2^2-\lambda_1^2+p^2\right) -2 p^2 \left(\lambda_2^2-\lambda_1^2+2 p^2\right)+2 \operatorname{log} (\lambda_2) \left(-\left(\lambda_2^2-\lambda_1^2\right)^2-2 \lambda_2^2 p^2+p^4\right)  \right. \\ &\hspace{3.81em}+2 \left. \operatorname{log} (\lambda_1) \left(-2 \lambda_2^2 \lambda_1^2+\lambda_1^4+\left(\lambda_2^2+p^2\right)^2\right)\right],\notag \\[1em]
+ f_2 &= \frac{1}{18 p^6}\left[-\mathcal{D}_{\mathrm{cut}}\cdot 3\zeta \left(\lambda_1^4-\lambda_1^2 \left(2 \lambda_2^2+p^2\right)+\left(\lambda_2^2+p^2\right)^2\right) -p^2 \left(6 \left(\lambda_2^2-\lambda_1^2\right)^2+3 p^2 \left(5 \lambda_2^2-\lambda_1^2\right)+13 p^4\right)  \right. \\ &\hspace{3.81em}+6 \left.\operatorname{log} (\lambda_2) \left(-\left(\lambda_2^2-\lambda_1^2\right)^3+3 \lambda_2^2 p^2 \left(\lambda_1^2-\lambda_2^2\right)-3 \lambda_2^2 p^4+p^6\right)  \right.\notag \\ &\hspace{3.81em}+6 \left. \operatorname{log} (\lambda_1) \left(\lambda_2^2-\lambda_1^2+p^2\right) \left(\lambda_1^4+\lambda_1^2 \left(p^2-2 \lambda_2^2\right)+\left(\lambda_2^2+p^2\right)^2\right)\right], \notag
+\end{align}
+\end{titledeqns}
+%\vfill

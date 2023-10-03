@@ -1,0 +1,44 @@
+\documentclass[tikz]{standalone}
+\input{fig_settings}
+
+\tikzset{invclip/.style={clip,insert path={{[reset cm]
+      (-\maxdimen,-\maxdimen) rectangle (\maxdimen,\maxdimen)
+    }}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+%\draw[help lines] (-1,-1) grid (15,9); 
+
+
+%Coordinate system 
+\draw[ultra thick, ->] (0,0) to (14,0);
+\draw[ultra thick, ->] (0,-0.028) to (0,9);
+
+
+%Ticks x-axis
+\draw[ultra thick] (3,0) to (3,0.2);
+\node at (3, -0.6) {\LARGE{$m$}};
+\draw[ultra thick] (6,0) to (6,0.2);
+\node at (6, -0.6) {\LARGE{$2m$}};
+
+%Axis labeling
+\node[rotate = 90] at (-0.6,6.1)  {\LARGE{Spectral Function\ \ $\rho(\omega)$}};
+\node at (12.2, -0.6) {\LARGE{Frequency\ \ $\omega$}};
+
+%Mass poles
+\draw[line width = 3pt, MScRed] (0,0) to (7.55,0);
+
+\draw[line width = 3pt, ->, MScRed] (3,0) to (3,8);
+\draw[line width = 3pt, ->, MScRed] (6,0) to (6,6);
+
+%Continuum
+\draw[line width = 3pt, MScRed] (7.5,0) to[out=90,in=120]  (9, 7) to[out=300,in=180] (13.5,2);
+
+%Descriptions
+\node[text width = 3cm, align = center] at (3, 9) {\LARGE{1-particle\\ mass pole}};
+\node[text width = 3cm, align = center] at (6, 7) {\LARGE{2-particle\\ mass pole}};
+\node[text width = 4cm, align = center] at (12, 6) {\LARGE{multi-particle  continuum}};
+
+\end{tikzpicture}
+\end{document} 

@@ -1,0 +1,98 @@
+%compiling with XeLaTeX
+\documentclass[digital, %colors on
+			   %print,  %for printing
+			   %twoside, %turn off for digital version
+			   openright, %chapter always start on the right page
+			   parskip=half,
+			   11pt]{mythesis}
+
+\usepackage{bbold}
+
+
+\begin{document}
+\pagestyle{plain}
+
+\section*{Inverting the propagator to find the right dependencies}
+Schematically the quark propagator DSE reads 
+\begin{equation}
+\begin{aligned}
+		\Gamma^{(2)}_q(p^2) = S^{-1}_q(p^2) &= S_{q0}^{-1}(p^2) - \Sigma_q(p^2) \\
+		&= i\slashed{p} A(p^2) + B(p^2),
+\end{aligned}
+\end{equation}
+where $A$ and $B$\ are two scalar dressing functions needed to fully characterize the Dirac structure of the quark propagator. 
+For the computation of the respective spectral functions we need the inverse of this expression. This inversion works as follows:
+\begin{equation}
+\begin{aligned}
+	 S_q(p^2) &= \frac{1}{i\slashed{p} A(p^2) + B(p^2)}  \\
+		&= \frac{-i\slashed{p} A(p^2) + B(p^2)}{(i\slashed{p} A(p^2) + B(p^2))(-i\slashed{p} A(p^2) + B(p^2))} \\
+		&= \frac{-i\slashed{p} A(p^2) + B(p^2)}{p^2A^2(p^2) + B^2(p^2)} \\
+		&= -i\slashed{p} \mathcal{A}(p^2; A,B) + \mathcal{B}(p^2; A,B)
+\end{aligned}
+\end{equation}
+with the explicit definitions:
+\begin{equation}
+	\begin{aligned}
+		\mathcal{A}(p^2) &= \frac{A(p^2)}{p^2A^2(p^2) + B^2(p^2)} \\
+		\mathcal{B}(p^2) &= \frac{B(p^2)}{p^2A^2(p^2) + B^2(p^2)}
+	\end{aligned}
+\end{equation}
+\color{MScRed} In the literature it is common to write 
+\begin{equation}
+	S_q(p^2) =  \frac{1}{i\slashed{p} A(p^2) + B(p^2)} = \frac{Z(p^2)}{i\slashed{p} + M(p^2)}
+\end{equation} 
+with 
+\begin{equation}
+	 Z(p^2) = \frac{1}{A(p^2)}\qquad \text{and}\qquad M(p^2) = \frac{B(p^2)}{A(p^2)}
+\end{equation}
+We can benchmark our results by comparing with known results for $Z$ and $M$ from perturbation theory, which can be restored from our computations by considering the chiral limit $\lambda_i \rightarrow 0$.\\
+ \normalcolor
+From the dependencies derived above, we may understand how to extract the respective part of the spectral functions $\rho_1$ and $\rho_2$ by comparing the derived expression with the spectral representation of the quark propagator:
+\begin{equation}
+	S_q(p^2) = -i\slashed{p} \mathcal{A}(p^2; A,B) + \mathcal{B}(p^2; A,B) \equiv \slashed{p}\underbrace{\int\limits_0^\infty\frac{\dd\lambda}{\pi}\frac{\lambda\rho_1(\lambda)}{p^2+\lambda^2}}_{\equiv\ -i\mathcal{A}(p^2)} + \underbrace{\int\limits_0^\infty\frac{\dd\lambda}{\pi}\frac{\lambda\rho_2(\lambda)}{p^2+\lambda^2}}_{\equiv\ \mathcal{B}(p^2)}
+\end{equation}
+With this knowledge we might understand how to extract the respective spectral function as a function of $\mathcal{A}(p^2;A,B)$ and $\mathcal{B}(p^2;A,B)$. We already finished the computation of $A(p^2)$ and $B(p^2)$ and therefore also of $\mathcal{A}(p^2;A,B)$ and $\mathcal{B}(p^2;A,B)$.\\
+In our numerical calculation, the spectral function is extracted from the imaginary part of the analytically continued propagator as follows:
+\begin{equation}
+	\rho(\omega) = 2 \operatorname{Im}\left[S_{q}\left(-i(\omega + i0^+); \mathcal{A}_{\mathrm{cont}}, \mathcal{B}_{\mathrm{cont}}\right)\right]
+\end{equation}
+This allows us to access the respective spectral functions by projecting on the parts of the propagator that are proportional to $-i\slashed{p}$ and unity.\\
+In total this yields
+\begin{align}
+	\rho_1(\omega) &= 2 \operatorname{Im}\left[\Pi_{\slashed{p}} S_{q}\left(-i(\omega + i0^+); \mathcal{A}_{\mathrm{cont}}, \mathcal{B}_{\mathrm{cont}}\right)\right] = 2 \operatorname{Im}\left[-i\mathcal{A}\left(-i(\omega + i0^+)\right)\right], \\
+	\rho_2(\omega) &= 2 \operatorname{Im}\left[\Pi_{\mathbb{1}} S_{q}\left(-i(\omega + i0^+); \mathcal{A}_{\mathrm{cont}}, \mathcal{B}_{\mathrm{cont}}\right)\right]  = 2 \operatorname{Im}\left[\mathcal{B}\left(-i(\omega + i0^+)\right)\right],
+\end{align}
+where the respective projectors are constructed such that they project on the respective parts of the propagator,
+\begin{align}
+	\Pi_{\slashed{p}}\left(\cdots\right) &= \operatorname{Tr}_{\mathrm{D}}\left[\frac{\slashed{p}}{p^2} \left(\cdots\right)\right],\\
+	\Pi_{\mathbb{1}}\left(\cdots\right) &= \operatorname{Tr}_{\mathrm{D}}\left[\left(\cdots\right)\right].
+\end{align}
+Here the index $\mathrm{D}$\ refers to the Dirac trace and we used the fact that the trace over an odd amount of gamma matrices vanishes.
+\newpage
+\section*{Explicit derivation}
+Perform explicitly the correct limit $\epsilon\rightarrow 0^+$ for the retarded propagator $S(-i(\omega + i0^+))$:
+\begin{equation}
+	\begin{aligned}
+		\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-(\omega + i\epsilon)^2 + \lambda^2} &= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-\omega^2 + \epsilon^2 + \lambda^2 - 2i\epsilon\omega} \\
+		&= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{-\omega^2 + \epsilon^2 + \lambda^2 + 2i\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2}
+	\end{aligned}
+\end{equation}
+Now look explicitly at the imaginary part of this expression:
+\begin{equation}
+	\begin{aligned}
+		\Im \lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-(\omega + i\epsilon)^2 + \lambda^2} &= \lim\limits_{\epsilon\rightarrow 0^+}  \frac{2\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2} \\
+		&= \frac{1}{2\omega}  \lim\limits_{\epsilon\rightarrow 0^+} \frac{\epsilon}{\left(\frac{\epsilon^2 + \lambda^2 - \omega^2}{2\omega}\right)^2 + \epsilon^2}\\
+		&= \frac{\pi}{2\omega}\delta\left(\frac{\lambda^2-\omega^2}{2\omega}\right) \\
+		&= \frac{\pi}{2\omega}\left(\eval{\frac{\partial\left(\frac{\lambda^2-\omega^2}{2\omega}\right)}{\partial\lambda}}_{\lambda=\omega}\right)^{-1}\delta\left(\lambda-\omega\right)\\
+		&= \frac{\pi}{2\omega}\delta\left(\lambda-\omega\right)
+	\end{aligned}
+\end{equation}
+Here we used the expression for the Fourier transform of the $\delta$-function and assumed $\omega > 0$ and $\lambda > 0$. In total this means that:
+\begin{equation}
+	\int\frac{\dd\lambda}{\pi}\frac{\lambda\rho(\lambda)}{p^2 + \lambda^2}\ \longrightarrow\ \int\frac{\dd\lambda}{\pi}\frac{\lambda\rho(\lambda)}{-\omega^2 + \lambda^2} + i\frac{\rho(\omega)}{2}
+\end{equation}
+This now trivially explains how we can extract the spectral function from the retarded propagator:
+\begin{equation}
+	\rho(\omega) =  2 \operatorname{Im}\left[S\left(-i(\omega + i0^+)\right)\right]
+\end{equation}
+\end{document}

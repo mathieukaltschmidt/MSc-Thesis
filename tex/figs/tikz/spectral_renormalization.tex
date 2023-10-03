@@ -1,0 +1,57 @@
+\documentclass[tikz, border = 0.2cm]{standalone}
+\input{fig_settings}
+
+\tikzset{invclip/.style={clip,insert path={{[reset cm]
+      (-\maxdimen,-\maxdimen) rectangle (\maxdimen,\maxdimen)
+    }}}}
+    
+\begin{document}
+
+\begin{tikzpicture}
+%\draw[help lines] (-1,-1) grid (14,8); 
+
+%Initial Integral (upper left)
+\node[draw, ultra thick, drop shadow, rounded corners, fill = white, MScRed, text=black, minimum size = 2cm ] at (2, 6 ) {\quad\Large{$\tilde{F}(p) \coloneqq \mathlarger{\int_q\int_{\lambda}} f(q,\lambda)$\phantom{\quad}}};
+\node at (2,7.3) {\large{Initial Integral}};
+\node[MScRed] at (2,4.6) {divergent};
+
+%First trafo (upper right)
+\node[draw, ultra thick, rounded corners, fill= white, MScRed, text=black, minimum size = 1.1cm] (pInt) at (10.3,6) {\Large{$\mathlarger{\int_q} f(q, \lambda)$}};
+\begin{scope}[on background layer]
+\node[draw, ultra thick, rounded corners, drop shadow, fill= white, MScRed, text=black, minimum size = 2cm ] at (10,6) {\phantom{\quad}\Large{$\mathlarger{\int_{\lambda}}\phantom{\Large{\mathlarger{\int_p} f(p, \lambda)}\qquad}$}};
+\end{scope}
+\node[MScRed] at (10.3,5.2) {\small{divergent}};
+\node[MScRed] at (10, 4.6) {divergent};
+
+%DimReg (lower right)
+\node[draw, ultra thick, rounded corners, fill= white, MScGreen, text=black, minimum size = 1.1cm] (pInt) at (10.3,1) {\Large{$\mathlarger{\int_q} f(q, \lambda)$}};
+\begin{scope}[on background layer]
+\node[draw, ultra thick, rounded corners, drop shadow, fill= white, MScRed, text=black, minimum size = 2cm ] at (10,1) {\phantom{\quad}\Large{$\mathlarger{\int_{\lambda}}\phantom{\Large{\mathlarger{\int_q} I(q, \lambda)}\qquad}$}};
+\end{scope}
+\node[MScGreen] at (10.3,0.2) {\small{finite}};
+\node[MScRed] at (10, -0.4) {divergent};
+
+%SpecReg (lower left)
+\node[draw, ultra thick, rounded corners, fill= white, MScGreen, text=black, minimum size = 1.1cm] (pInt) at (2.3,1) {\Large{$\mathlarger{\int_q} f(q, \lambda)$}};
+\begin{scope}[on background layer]
+\node[draw, ultra thick, rounded corners, drop shadow, fill= white, MScGreen, text=black, minimum size = 2cm ] at (2,1) {\phantom{\quad}\Large{$\mathlarger{\int_{\lambda}}\phantom{\Large{\mathlarger{\int_q} I(q, \lambda)}\qquad}$}};
+\end{scope}
+\node[MScGreen] at (2.3,0.2) {\small{finite}};
+\node[MScGreen] at (2, -0.4) {finite};
+\node at (2,2.3) {\large{Performed Integral}};
+
+%Arrows and description
+\draw[ultra thick, ->] (5,6) to (7.8,6);
+\node[text width = 2.5cm, align = center] at (6.4, 6.7) {\small{$\mathlarger{\int_q} \color{MScRed}{\longleftrightarrow}\normalcolor \mathlarger{\int_{\lambda}}$}};
+
+\draw[ultra thick, ->] (10,4.3) to (10,2.2);
+\node[text width = 2.5cm, align = center] at (11.4, 3.25) {Dimensional Regularization};
+
+\draw[ultra thick, ->] (7.8,1) to (4.2,1);
+\node[text width = 2.5cm, align = center] at (6, 0.3) {Spectral Regularization};
+
+\draw[ultra thick, ->] (7.9,4.9) to (4.1,2.1);
+\node[rotate = 36.5] at (5.8, 3.9) {\large{Renormalization}};
+
+\end{tikzpicture}
+\end{document} 

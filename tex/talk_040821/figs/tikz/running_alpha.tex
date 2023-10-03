@@ -1,0 +1,52 @@
+\documentclass[tikz]{standalone}
+\input{fig_settings}
+
+\tikzset{invclip/.style={clip,insert path={{[reset cm]
+      (-\maxdimen,-\maxdimen) rectangle (\maxdimen,\maxdimen)
+    }}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+%\draw[help lines] (-2,-1) grid (15,9); 
+
+
+%Coordinate system 
+\draw[ultra thick, ->] (0,0) to (11,0);
+\draw[ultra thick, ->] (0,-0.028) to (0,8);
+
+
+%Ticks x-axis
+\node at (0, -0.6) {\LARGE{$1$}};
+\draw[ultra thick] (3,0) to (3,0.2);
+\node at (3, -0.6) {\LARGE{$10$}};
+\draw[ultra thick] (6,0) to (6,0.2);
+\node at (6, -0.6) {\LARGE{$100$}};
+\draw[ultra thick] (9,0) to (9,0.2);
+\node at (9, -0.6) {\LARGE{$1000$}};
+
+%Ticks y-axis
+\node at (-1, 1) {\LARGE{$0.10$}};
+\draw[ultra thick] (0,1) to (0.2,1);
+\node at (-1, 4) {\LARGE{$0.25$}};
+\draw[ultra thick] (0,4) to (0.2,4);
+\node at (-1, 7) {\LARGE{$0.40$}};
+\draw[ultra thick] (0,7) to (0.2,7);
+
+%Axis labeling
+\node[rotate = 90] at (-2,5.5)  {\Large{Strong coupling constant\ \ $\alpha_s$}};
+\node at (11.5, -0.6) {\Large{Energy} [GeV]};
+
+
+%Curve
+\draw[line width = 3pt, MScRed] (0.5, 7.5) to[out=275,in=180] (10.5,0.7);
+
+%Help points
+%\filldraw (9,0.8) circle (3pt);
+%\filldraw (6,1.4) circle (3pt);
+%\filldraw (3,2.6) circle (3pt);
+%\filldraw (1,5.6) circle (3pt);
+%\filldraw (0.5,7.5) circle (3pt);
+
+\end{tikzpicture}
+\end{document} 

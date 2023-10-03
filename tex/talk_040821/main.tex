@@ -1,0 +1,114 @@
+\documentclass[10pt, aspectratio = 169]{beamer}
+
+%Useful settings 
+\include{metadata/settings}
+
+%Main document
+\begin{document}
+\pagenumbering{roman}
+\begin{frame}[plain, noframenumbering]
+\maketitle
+\end{frame}
+
+\begin{frame}[plain, noframenumbering]{Outline}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+%Content
+\pagenumbering{arabic}
+\include{content/00_main}
+
+
+
+
+
+%Backup Slides
+\section*{Backup}
+\pagestyle{empty}
+\begin{frame}[noframenumbering]{Backup I: Dirac Structure of the Quark Propagator DSE}
+The quark propagator is obtained by inverting the full two-point function:
+\begin{equation}
+\begin{aligned}
+		\Gamma^{(2)}_q(p) = G^{-1}_q(p) &= G_{q,0}^{-1}(p) - \Sigma_q(p) \\
+		&= i\slashed{p} A(p) + B(p) \\
+		&= \frac{1}{Z_q(p)}\left(i\slashed{p} + M_q(p)\right).
+\end{aligned}
+\end{equation}
+Here we introduced the dressing functions $Z_q(p)$ and $M_q(p)$ via
+\begin{equation}
+	 Z_q(p) = \frac{1}{A(p)}\qquad \text{and}\qquad M_q(p) = \frac{B(p)}{A(p)}.
+\end{equation}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Backup I: Dirac Structure of the Quark Propagator DSE}
+In terms of these dressings, the quark propagator reads:
+\begin{equation}
+\begin{aligned}
+	 G_q(p) &= Z_q(p)\left(\frac{1}{i\slashed{p} + M_q(p)}\right)  \\
+		&= Z_q(p)\left(\frac{-i\slashed{p} + M_q(p)}{(i\slashed{p} + M_q(p))(-i\slashed{p} + M_q(p))}\right) \\
+		&= Z_q(p)\left(\frac{-i\slashed{p} + M_q(p)}{p^2 + M_q^2(p)}\right) \\
+		&= -i\slashed{p} \left(\frac{Z_q(p)}{p^2 + M_q^2(p)}\right) +  \left(\frac{Z_q(p)M_q(p)}{p^2 + M_q^2(p)}\right)\\
+		&\equiv -i\slashed{p}\cdot G_q^D(p) + G_q^M(p).
+\end{aligned} \label{eqn:quark_prop_inversion}
+\end{equation}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Backup I: Dirac Structure of the Quark Propagator DSE}
+Now we can identity the different parts of this results with the spectral representation of the quark propagator:
+
+\begin{equation}
+\begin{aligned}
+	G_q(p) &=-i\slashed{p}\cdot G_q^D(p) + G_q^M(p)\\[1em]
+	&\equiv \slashed{p} \int_\lambda\frac{\lambda\rho_q^{D}(\lambda)}{p^2+\lambda^2} + \int_\lambda\frac{\lambda\rho_q^M(\lambda)}{p^2+\lambda^2}.
+	\end{aligned}\label{eqn:quark_prop_identification}
+\end{equation}
+
+\alert{But how can we now extract the spectral functions from the propagator?}
+\end{frame}
+
+
+
+
+\begin{frame}[noframenumbering]{Backup II: Extracting the Spectral Function from the Retarded Propagator}
+Consider explicitly the \enquote{analytic continuation} $p\rightarrow -i\left(\omega + i\varepsilon\right)$ in the limit  $\epsilon\rightarrow 0^+$: 
+\begin{equation}
+	\begin{aligned}
+		\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-(\omega + i\epsilon)^2 + \lambda^2} &= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-\omega^2 + \epsilon^2 + \lambda^2 - 2i\epsilon\omega} \\
+		&= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{-\omega^2 + \epsilon^2 + \lambda^2 + 2i\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2}.
+	\end{aligned}
+	\end{equation}\end{frame}
+
+\begin{frame}[noframenumbering]{Backup II: Extracting the Spectral Function from the Retarded Propagator}
+Focusing only on the imaginary part yields
+\begin{equation}
+	\begin{aligned}
+		 \lim\limits_{\epsilon\rightarrow 0^+}  \Im\left[\frac{1}{-(\omega + i\epsilon)^2 + \lambda^2}\right] &= \lim\limits_{\epsilon\rightarrow 0^+}  \frac{2\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2} \\
+		&= \frac{1}{2\omega}  \lim\limits_{\epsilon\rightarrow 0^+} \frac{\epsilon}{\left(\frac{\epsilon^2 + \lambda^2 - \omega^2}{2\omega}\right)^2 + \epsilon^2}\\
+		&= \frac{\pi}{2\omega}\delta\left(\frac{\lambda^2-\omega^2}{2\omega}\right) \\
+		&= \frac{\pi}{2\omega}\left(\eval{\frac{\partial\left(\frac{\lambda^2-\omega^2}{2\omega}\right)}{\partial\lambda}}_{\lambda=\omega}\right)^{-1}\delta\left(\lambda-\omega\right)\\
+		&= \frac{\pi}{2\omega}\delta\left(\lambda-\omega\right).
+	\end{aligned}
+\end{equation}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Backup II: Extracting the Spectral Function from the Retarded Propagator}
+This leaves us with
+\begin{equation}
+	G(p) = \int_\lambda\frac{\lambda\rho(\lambda)}{p^2 + \lambda^2}\ \longrightarrow\ \int_\lambda\frac{\lambda\rho(\lambda)}{-\omega^2 + \lambda^2} + i\frac{\rho(\omega)}{2} = G\left(-i(\omega + i0^+)\right),
+\end{equation}
+and explains why the spectral function can be obtained from the imaginary part of the retarded propagator:
+\begin{equation}
+	\rho(\omega) =  2 \operatorname{Im}\left[G\left(-i(\omega + i0^+)\right)\right].
+\end{equation}
+For our specific case of the quark propagator we conclude that:
+\begin{align}
+	\rho_q^D(\omega) &= 2 \operatorname{Im}\left[\Pi_{\slashed{p}} G_{q}\left(-i(\omega + i0^+)\right)\right] = 2 \operatorname{Im}\left[-i G_q^D(-i(\omega + i0^+))\right] \\
+	\rho_q^M(\omega) &= 2 \operatorname{Im}\left[\Pi_{\mathbb{1}} G_{q}\left(-i(\omega + i0^+)\right)\right]  = 2 \operatorname{Im}\left[G_q^M(-i(\omega + i0^+))\right],
+	\label{eqn:correct_relation}
+\end{align}
+\end{frame}
+
+
+
+\end{document}

@@ -1,0 +1,101 @@
+\chapter{Disentangling the Dirac Structure of the Quark Propagator}\label{chap:appendixB}
+In this short appendix, we want to have a closer look at the Dirac structure of the quark propagator DSE, in order to understand how we can access the spectral functions associated with the respective parts of the (retarded) quark propagator. This additional structure, meaning that the quark DSE is matrix-valued, is the main difference compared to the scalar and ghost DSE analyzed in \cite{HorakPawlowskiWink2020} and \cite{HorakPapavassiliouPawlowskiWink2021}.
+\section*{Inverting the Quark DSE to obtain the Quark Propagator}
+As discussed in \chapref{chap:methods}, the full propagator $G(p)$ is the inverse of the 2-point function $\Gamma^{(2)}(p)$. In our specific case, the 2-point function for the quarks computed via the DSE reads
+\begin{equation}
+\begin{aligned}
+		\Gamma^{(2)}_q(p) = G^{-1}_q(p) &= G_{q,0}^{-1}(p) - \Sigma_q(p) \\
+		&= i\slashed{p} A(p) + B(p) \\
+		&= \frac{1}{Z_q(p)}\left(i\slashed{p} + M_q(p)\right),
+\end{aligned}
+\end{equation}
+featuring the bare inverse propagator $G_{q,0}^{-1}(p)$ and the one-loop quark self energy $\Sigma_q(p)$. In the second line, we introduce two scalar dressing functions $A(p)$ and $B(p)$, collecting all parts of the DSE that are proportional to either $i\slashed{p}$ or unity. We will refer to the different parts of the (inverse) propagator as Dirac vector ($\sim i\slashed{p}$) and Dirac scalar ($\sim \mathbb{1}$) part\footnote{We do not explicitly write a unit matrix next to the Dirac scalar part, its meaning as being proportional to unity in Dirac space should be implicitly understood.} in the following. For similar discussions in the context of QCD confer \cite{Solis2019} and in QED  confer \cite{JiaPennington2017}. 
+It is a common choice to redefine the scalar dressings to $Z_q(p)$ and $M_q(p)$ instead, which are known as the quark wave function renormalization and the quark mass function. They are related to $A(p)$ and $B(p)$ via
+\begin{equation}
+	 Z_q(p) = \frac{1}{A(p)}\qquad \text{and}\qquad M_q(p) = \frac{B(p)}{A(p)}.
+\end{equation}
+The two dressing functions $Z_q(p)$ and $M_q(p)$ are known from perturbation theory, cf. \cite{PelaezTissierWschebor2014, BarriosGraceyPelaezReinosa2021}, lattice studies, cf. \cite{Parappilly2005,Parappilly2006}, and functional methods, cf. \cite{GaoPapavassiliouPawlowski2021}, and can therefore be compared to our results.\\
+With this parameterization of the inverse quark propagator at hand, we can now explicitly perform the inversion to obtain the full expressions for the Dirac vector and scalar part of the quark propagator in terms of the dressing functions introduced before:
+\begin{equation}
+\begin{aligned}
+	 G_q(p) &= Z_q(p)\left(\frac{1}{i\slashed{p} + M_q(p)}\right)  \\
+		&= Z_q(p)\left(\frac{-i\slashed{p} + M_q(p)}{(i\slashed{p} + M_q(p))(-i\slashed{p} + M_q(p))}\right) \\
+		&= Z_q(p)\left(\frac{-i\slashed{p} + M_q(p)}{p^2 + M_q^2(p)}\right) \\
+		&= -i\slashed{p} \left(\frac{Z_q(p)}{p^2 + M_q^2(p)}\right) +  \left(\frac{Z_q(p)M_q(p)}{p^2 + M_q^2(p)}\right)\\
+		&\equiv -i\slashed{p}\cdot G_q^D(p) + G_q^M(p).
+\end{aligned} \label{eqn:quark_prop_inversion}
+\end{equation}
+Here we used the fact, that 
+\begin{equation}
+	\begin{aligned}
+		\slashed{p}^2 = p_{\mu}p_{\nu}\gamma^{\mu}\gamma^{\nu} &= p_{\mu}p_{\nu}\big(\left\{\gamma^{\mu},\gamma^{\nu}\right\} - \gamma^{\nu}\gamma^{\mu}\big)\\
+		&= p_{\mu}p_{\nu}\big(2\delta^{\mu\nu} - \gamma^{\nu}\gamma^{\mu}\big)\\
+		&= 2p^2 - \slashed{p}^2,
+	\end{aligned}
+\end{equation}
+and therefore $\slashed{p}^2 = p^2$. In the last line we labelled the Dirac vector and scalar part $G_q^D(p)$ and $G_q^M(p)$ , respectively.\\
+Comparing the derived expression for the quark propagator with the spectral representation (\ref{eqn:QuarkSpecFunc}), allows for an identification of the spectral integrals involving $\rho_q^{D}(\lambda)$ and $\rho_q^{M}(\lambda)$ with the Dirac vector and scalar part of the propagator:
+\begin{equation}
+\begin{aligned}
+	G_q(p) &=-i\slashed{p}\cdot G_q^D(p) + G_q^M(p)\\
+	&\equiv \slashed{p} \int_\lambda\frac{\lambda\rho_q^{D}(\lambda)}{p^2+\lambda^2} + \int_\lambda\frac{\lambda\rho_q^M(\lambda)}{p^2+\lambda^2}.
+	\end{aligned}\label{eqn:quark_prop_identification}
+\end{equation}
+In \chapref{chap:methods} we presented the relation between the spectral function and the retarded propagator, given by \eqref{eqn:specfunc_relation}. Since this relation is of pivotal importance for this work (and for the next steps of our considerations in this chapter), we present a detailed derivation in the following section. 
+
+\section*{Accessing the Spectral Function(s) from the retarded Propagator}
+To derive \eqref{eqn:specfunc_relation}, we explicitly perform the analytic continuation $p\rightarrow -i\left(\omega + i\varepsilon\right)$ and consider the limit $\epsilon\rightarrow 0^+$. The only modification in the spectral representation of the propagator occurs in the denominator, hence we can focus on this part of the expression: 
+\begin{equation}
+	\begin{aligned}
+		\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-(\omega + i\epsilon)^2 + \lambda^2} &= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{1}{-\omega^2 + \epsilon^2 + \lambda^2 - 2i\epsilon\omega} \\
+		&= 	\lim\limits_{\epsilon\rightarrow 0^+} \frac{-\omega^2 + \epsilon^2 + \lambda^2 + 2i\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2}
+	\end{aligned}
+\end{equation}
+Focusing only on the imaginary part yields
+\begin{equation}
+	\begin{aligned}
+		 \lim\limits_{\epsilon\rightarrow 0^+}  \Im\left[\frac{1}{-(\omega + i\epsilon)^2 + \lambda^2}\right] &= \lim\limits_{\epsilon\rightarrow 0^+}  \frac{2\epsilon\omega}{(\epsilon^2 + \lambda^2 - \omega^2)^2 + 4\omega^2\epsilon^2} \\
+		&= \frac{1}{2\omega}  \lim\limits_{\epsilon\rightarrow 0^+} \frac{\epsilon}{\left(\frac{\epsilon^2 + \lambda^2 - \omega^2}{2\omega}\right)^2 + \epsilon^2}\\
+		&= \frac{\pi}{2\omega}\delta\left(\frac{\lambda^2-\omega^2}{2\omega}\right) \\
+		&= \frac{\pi}{2\omega}\left(\eval{\frac{\partial\left(\frac{\lambda^2-\omega^2}{2\omega}\right)}{\partial\lambda}}_{\lambda=\omega}\right)^{-1}\delta\left(\lambda-\omega\right)\\
+		&= \frac{\pi}{2\omega}\delta\left(\lambda-\omega\right),
+	\end{aligned}
+\end{equation}
+where we used the expression for the Fourier transform of the $\delta$-function and assumed $\omega > 0$ and $\lambda > 0$. In total we are left with:
+\begin{equation}
+	G(p) = \int_\lambda\frac{\lambda\rho(\lambda)}{p^2 + \lambda^2}\ \longrightarrow\ \int_\lambda\frac{\lambda\rho(\lambda)}{-\omega^2 + \lambda^2} + i\frac{\rho(\omega)}{2} = G\left(-i(\omega + i0^+)\right).
+\end{equation}
+From this it is clear that \eqref{eqn:specfunc_relation} holds:
+\begin{equation}
+	\rho(\omega) =  2 \operatorname{Im}\left[G\left(-i(\omega + i0^+)\right)\right].
+\end{equation}
+For our case (\ref{eqn:quark_prop_identification}) this means, that we can access the spectral functions after appropriately projecting on the Dirac vector and scalar part and making use of \eqref{eqn:specfunc_relation} afterwards.
+This results in
+\begin{align}
+	\rho_q^D(\omega) &= 2 \operatorname{Im}\left[\Pi_{\slashed{p}} G_{q}\left(-i(\omega + i0^+)\right)\right] = 2 \operatorname{Im}\left[-i G_q^D(-i(\omega + i0^+))\right] \\
+	\rho_q^M(\omega) &= 2 \operatorname{Im}\left[\Pi_{\mathbb{1}} G_{q}\left(-i(\omega + i0^+)\right)\right]  = 2 \operatorname{Im}\left[G_q^M(-i(\omega + i0^+))\right],
+	\label{eqn:correct_relation}
+\end{align}
+where the respective projection operators $\Pi_{\slashed{p}}$ and $\Pi_{\mathbb{1}}$ are defined as
+\begin{align}
+	\Pi_{\slashed{p}}\left(\cdots\right) &= \operatorname{Tr}_{\mathrm{D}}\left[\frac{\slashed{p}}{p^2} \left(\cdots\right)\right],\\
+	\Pi_{\mathbb{1}}\left(\cdots\right) &= \operatorname{Tr}_{\mathrm{D}}\left[\left(\cdots\right)\right].
+\end{align}
+Here, the index $\mathrm{D}$\ refers to the Dirac trace and we used the fact that the trace over an odd number of gamma matrices vanishes, cf. \cite{PeskinSchroeder1995}. This concludes our discussion on how to handle the Dirac structure of the quark propagator in the context of our work. To complete this appendix we will have a brief look at the determination of the poles of the quark propagator and the associated residues.
+\section*{Finding Poles and computing the corresponding Residues}
+
+
+To account for the the splitting  into pole and continuous contributions to the spectral functions, we need to compute the residue of the pole in every iteration step since it enters the pole contribution as a prefactor, characterizing the associated contour integral enclosing the (isolated) pole. The quark propagator has a natural pole, i.\,e. the zero crossing of the denominator of \eqref{eqn:quark_prop_inversion}, leading to a $\delta$-distribution in the spectral function. \\
+We want to make use of the fact, that the residues of an inverse function can easily be computed, if we know the zeros of the original function, i.\,e.
+\begin{equation}
+	\text{If}\ f(a) = 0\ \text{is a first order root of}\ f \implies \operatorname{Res}_a \frac{1}{f} = \frac{1}{f'(a)},
+\end{equation} 
+for a complex function $f$ with $a\in\mathbb{C}$ \cite{Marshall2019}.
+This translates in our case to
+\begin{equation}
+\begin{aligned}
+	 \eval{p^2 + M_q^2(p)}_{p=p_{\mathrm{root}}} = 0 \implies \operatorname{Res}_{p_{\mathrm{root}}} G_q(p^2) &= \eval{\frac{1}{\partial_{p^2}\left(p^2 + M_q^2(p)\right)}}_{p=p_{\mathrm{root}}} \\ 
+	 &=  \eval{\frac{1}{1 + 2M_q(p)\frac{\partial_pM_q(p)}{2p}}}_{p=p_{\mathrm{root}}}.
+	 \end{aligned}\label{eqn:residue}
+\end{equation}
+In practice we use Mathematicas \texttt{FindRoot[]} method to find the correct pole position and apply \eqref{eqn:residue} to compute the corresponding residue after every iteration step.

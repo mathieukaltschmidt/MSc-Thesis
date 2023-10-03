@@ -1,0 +1,93 @@
+\documentclass[tikz]{standalone}
+\input{fig_settings}
+
+\tikzset{invclip/.style={clip,insert path={{[reset cm]
+      (-\maxdimen,-\maxdimen) rectangle (\maxdimen,\maxdimen)
+    }}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+\draw[help lines, white] (-1,-1) grid (15,9); 
+
+
+%Coordinate system with gap in x-axis
+\draw[ultra thick] (0,0) to (10,0);
+\draw[ultra thick, ->] (10.3,0) to (14,0);
+
+\draw[ultra thick] (9.9,-0.3) to (10.1,0.3);
+\draw[ultra thick] (10.2,-0.3) to (10.4,0.3);
+
+\draw[ultra thick, ->] (0,-0.028) to (0,9);
+
+%Ticks y-axis
+\draw[ultra thick] (0,8) to (0.2,8);
+\node at (-0.6, 8) {\Large{$200$}};
+
+\draw[ultra thick] (0,6) to (0.2,6);
+\node at (-0.6, 6) {\Large{$150$}};
+
+\draw[ultra thick] (0,4) to (0.2,4);
+\node at (-0.6, 4) {\Large{$100$}};
+
+\draw[ultra thick] (0,2) to (0.2,2);
+\node at (-0.6, 2) {\Large{$\phantom{1}50$}};
+
+\node at (-0.6, -0.35) {\Large{$\phantom{10}0$}};
+
+
+%Ticks x-axis
+\draw[ultra thick] (3,0) to (3,0.2);
+\node at (3, -0.4) {\Large{$1$}};
+
+%Axis labeling
+\node[rotate = 90] at (-1.5,6.1)  {\Large{Temperature $T$ [MeV]}};
+\node at (11.5, -0.8) {\Large{Net Baryon Density}};
+
+
+
+%Curves
+
+%CSC regime
+\draw[ultra thick, color=MScGray, dotted] (8,2.05) to [bend left=10] (14,3);
+
+%line dashed until CEP and solid afterwards
+\begin{scope}
+\clip (4.5,0) rectangle (9,6);
+\draw[ultra thick, color=MScBlue] (0,6.4) to [bend left=35] (9,0);
+\end{scope}
+
+\begin{scope}
+\begin{pgfinterruptboundingbox}
+\path[invclip] (4.5,0) rectangle (9,6);
+\end{pgfinterruptboundingbox}
+\draw[ultra thick, color=MScBlue, dashed] (0,6.4) to [bend left=35] (9,0);
+\end{scope}
+
+
+
+%Experiments
+\draw[ultra thick, color=MScRed, ->] (3,0.7) to [bend right=10] (2,6.8);
+\node[rotate = 277, MScRed] at (2.4, 3.5) {\large{RHIC, LHC}};
+\draw[ultra thick, color=MScGreen, ->] (3.2,0.6) to [bend right=15] (7.5,4.5);
+\node[rotate = 35, MScGreen] at (4.7, 2) {\large{FAIR}};
+
+%CEP
+\filldraw (4.5,5.37) circle (5pt);
+\filldraw[MScRed] (4.5,5.37) circle (4.5pt);
+\node at (7.5, 5.5) {\large{Critical Endpoint (CEP) ?}};
+
+%Additional Nodes
+\node[fill=white, rotate=270] at (0.79, 6) {\Large{Early Universe $\longrightarrow$}};
+
+\node at (2, 0.8) {\large{Nuclei}};
+\filldraw (3,0.5) circle (3pt);
+
+\node at (10, 7) {\LARGE{Quarks and Gluons}};
+\node[fill=white] at (4.5, 3.8) {\LARGE{Hadrons}};
+\node[fill=white] at (8, 1) {\Large{Neutron Stars}};
+\node[align=left, text width = 10em] at (12.5, 1.2) {\Large{Color Superconductor ?}};
+
+
+\end{tikzpicture}
+\end{document} 

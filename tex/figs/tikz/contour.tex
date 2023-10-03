@@ -1,0 +1,58 @@
+\documentclass[tikz]{standalone}
+\input{fig_settings}
+
+\begin{document}
+
+\begin{tikzpicture}
+%\draw[help lines] (-6.5,-5) grid (6.5,5); 
+
+\def\gap{0.8}
+\def\bigradius{4.5}
+\def\littleradius{1.4}
+
+%Coordinate system 
+\draw[ultra thick, color = white] (-6.5,0) to (-5,0);
+\draw[ultra thick] (-5,0) to (3.01,0);
+\draw[->, ultra thick] (5,0) to (5.5,0);
+\node at (6.6,0)  {\LARGE{$\operatorname{Re} (p^2 ) $}};
+\draw[->, ultra thick] (0,-5) to (0,5);
+\node at (0, 5.5) {\LARGE{$\operatorname{Im} (p^2 )  $}};
+
+
+
+
+%Integration Contour
+\draw[ultra thick, color=MScBlue,
+	  decoration={ markings,
+      mark=at position 0.075 with {\arrow{latex}}, 
+      mark=at position 0.245 with {\arrow{latex}},
+      mark=at position 0.415 with {\arrow{latex}},
+      mark=at position 0.585 with {\arrow{latex}},
+      mark=at position 0.71 with {\arrow{latex}},  
+      mark=at position 0.955 with {\arrow{latex}}}, 
+      postaction={decorate}]  
+  let
+     \n1 = {asin(\gap/2/\bigradius)},
+     \n2 = {asin(\gap/2/\littleradius)}
+  in (\n1:\bigradius) arc (\n1:360-\n1:\bigradius)
+  -- (-\n2:\littleradius) arc (-\n2:-360+\n2:\littleradius)
+  -- cycle;
+  
+\draw[line width = 4pt, white] (0,0) circle (1.4);
+ 
+\draw[ultra thick] (-2,0) to (2,0);
+\draw[ultra thick] (0,-2) to (0,2);
+
+
+ \draw[MScBlue, ultra thick, rounded corners] (1.43,-0.4) arc (270:90:0.4);
+ 
+ %Non-analycities
+\draw[ultra thick, snake=zigzag] (3,0) to (5,0);
+\filldraw (1.5,0) circle (2pt);
+\filldraw (2.5,0) circle (2pt);
+ 
+
+
+
+\end{tikzpicture}
+\end{document} 
